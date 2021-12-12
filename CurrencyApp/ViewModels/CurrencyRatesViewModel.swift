@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+enum Result: Error {
+    case success
+    case failure
+}
+
 class CurrencyRatesViewModel: NSObject {
     
     @IBOutlet var apiService: ApiService!
@@ -25,16 +30,17 @@ class CurrencyRatesViewModel: NSObject {
         self.apiService = ApiService()
     }
     
-    func fetchCurrencies(completion: @escaping () -> ()) {
+    func fetchCurrencies(completion: @escaping (Result) -> Void) {
         apiService.sendRequest(endpoint: "A") { data in
             if let safeData = data {
                 do {
                     self.isLoading = true
                     let exchangeRates = try JSONDecoder().decode([ExchangeRates].self, from: safeData)
                     self.exchangeRates = exchangeRates[0].rates
-                    completion()
+                    completion(.success)
                 } catch {
                     self.errorMessage = error.localizedDescription
+                    completion(.failure)
                 }
             }
             self.isLoading = false

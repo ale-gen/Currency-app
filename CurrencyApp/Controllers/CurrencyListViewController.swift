@@ -15,9 +15,16 @@ class CurrencyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currencyViewModel.fetchCurrencies() {
+        currencyViewModel.fetchCurrencies { result in
             DispatchQueue.main.async {
-                self.currencyTableView.reloadData()
+                switch result {
+                case .success:
+                    self.currencyTableView.reloadData()
+                case .failure:
+                    let alert = UIAlertController(title: "Cannot load data", message: self.currencyViewModel.errorMessage, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }
     }
