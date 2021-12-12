@@ -10,12 +10,19 @@ import UIKit
 class CurrencyListViewController: UIViewController {
     
     @IBOutlet weak var currencyTableView: UITableView!
+    @IBOutlet weak var spinnerView: UIActivityIndicatorView!
+    
     
     @IBOutlet var currencyViewModel: CurrencyRatesViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currencyViewModel.fetchCurrencies { result in
+        configureSpinner()
+        currencyViewModel.fetchCurrencies { isLoading in
+            DispatchQueue.main.async {
+                self.manageSpinnerShowing(isLoading: isLoading)
+            }
+        } completion: { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
@@ -25,12 +32,25 @@ class CurrencyListViewController: UIViewController {
                 }
             }
         }
+
     }
     
     func showAlert() {
         let alert = UIAlertController(title: "Cannot load data", message: self.currencyViewModel.errorMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func configureSpinner() {
+        spinnerView.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY)
+    }
+    
+    func manageSpinnerShowing(isLoading: Bool) {
+        if (isLoading) {
+            self.spinnerView.startAnimating()
+        } else {
+            self.spinnerView.stopAnimating()
+        }
     }
 }
 

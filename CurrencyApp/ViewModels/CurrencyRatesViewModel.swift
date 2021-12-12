@@ -30,20 +30,24 @@ class CurrencyRatesViewModel: NSObject {
         self.apiService = ApiService()
     }
     
-    func fetchCurrencies(completion: @escaping (Result) -> Void) {
+    func fetchCurrencies(completionForSpinner: @escaping (Bool) -> (Void), completion: @escaping (Result) -> Void) {
         apiService.sendRequest(endpoint: "A") { data in
             if let safeData = data {
                 do {
                     self.isLoading = true
+                    completionForSpinner(self.isLoading)
                     let exchangeRates = try JSONDecoder().decode([ExchangeRates].self, from: safeData)
                     self.exchangeRates = exchangeRates[0].rates
                     completion(.success)
                 } catch {
+                    self.isLoading = false
                     self.errorMessage = error.localizedDescription
+                    completionForSpinner(self.isLoading)
                     completion(.failure)
                 }
             }
             self.isLoading = false
+            completionForSpinner(self.isLoading)
         }
     }
 }

@@ -34,6 +34,10 @@
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="dot-6F-EHo"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="KkV-p0-jeX">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,6 +51,7 @@
                     <connections>
                         <outlet property="currencyTableView" destination="OpK-kq-jg3" id="Inj-7x-Be0"/>
                         <outlet property="currencyViewModel" destination="YqT-BI-inC" id="60E-SN-JI0"/>
+                        <outlet property="spinnerView" destination="KkV-p0-jeX" id="gB3-yb-RP2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
