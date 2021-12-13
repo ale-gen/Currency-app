@@ -25,9 +25,11 @@ class CurrencyDetailViewController: UIViewController {
         configureLabels()
         configureSpinner()
         configureDatePickers()
+        setDefaultDates()
         refresh()
         tableView.dataSource = self
         tableView.register(UINib(nibName: K.currencyDetailsNibName, bundle: nil), forCellReuseIdentifier: K.currencyDetailsCellIdentifier)
+        
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
@@ -35,6 +37,7 @@ class CurrencyDetailViewController: UIViewController {
     }
     
     func refresh() {
+        getDatesFromPickers()
         currencyViewModel.fetchCurrencyDetails { isLoading in
             DispatchQueue.main.async {
                 self.manageSpinnerShowing(isLoading: isLoading)
@@ -51,10 +54,21 @@ class CurrencyDetailViewController: UIViewController {
         }
     }
     
+    func getDatesFromPickers() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        let startDatePickerValue = dateFormatter.string(from: startDatePicker.date)
+        let endDatePickerValue = dateFormatter.string(from: endDatePicker.date)
+        currencyViewModel.startDate = startDatePickerValue
+        currencyViewModel.endDate = endDatePickerValue
+    }
+    
     func showAlert() {
         let alert = UIAlertController(title: "Cannot load data", message: self.currencyViewModel.errorMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        currencyViewModel.resetCurrentData()
+        tableView.reloadData()
     }
     
     func configureSpinner() {
@@ -84,12 +98,36 @@ class CurrencyDetailViewController: UIViewController {
         
         endDateLabel.layer.masksToBounds = true
         endDateLabel.layer.cornerRadius = 15
-        
-        startDateLabel.center = CGPoint(x: self.view.frame.midX / 2, y: startDateLabel.frame.midY)
     }
     
     func configureDatePickers() {
-//        startDatePicker
+        startDatePicker.semanticContentAttribute = .forceLeftToRight
+        startDatePicker.center = CGPoint(x: self.startDateLabel.frame.midX, y: startDatePicker.frame.midY)
+        
+        endDatePicker.semanticContentAttribute = .forceLeftToRight
+        endDatePicker.center = CGPoint(x: self.endDateLabel.frame.midX, y: startDatePicker.frame.midY)
+        
+        startDatePicker.backgroundColor = .white
+        startDatePicker.layer.cornerRadius = 5
+        
+        endDatePicker.backgroundColor = .white
+        endDatePicker.layer.cornerRadius = 5
+    }
+    
+    private func setDefaultDates() {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        let day = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "MM"
+        let month = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "YYYY"
+        let year = dateFormatter.string(from: date)
+        let startDateString = "\(year)-\(month)-01"
+        let endDateString = "\(year)-\(month)-\(day)"
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        startDatePicker.setDate(dateFormatter.date(from: startDateString)!, animated: false)
+        endDatePicker.setDate(dateFormatter.date(from: endDateString)!, animated: false)
     }
 }
 

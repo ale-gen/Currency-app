@@ -62,6 +62,8 @@ class CurrencyListViewController: UIViewController {
         let alert = UIAlertController(title: "Cannot load data", message: self.currencyViewModel.errorMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        currencyViewModel.resetCurrentData()
+        currencyTableView.reloadData()
     }
     
     func configureSegmentedControl() {

@@ -57,7 +57,7 @@ class CurrencyRatesViewModel: NSObject {
     }
     
     func fetchCurrencyDetails(completionForSpinner: @escaping (Bool) -> (Void), completion: @escaping (Result) -> Void) {
-        apiService.sendRequest(table: endpoint, code: "EUR", startDate: "2020-04-23", endDate: "2021-04-23") { data in
+        apiService.sendRequest(table: endpoint, code: selectedCurrency!.code, startDate: startDate!, endDate: endDate!) { data in
             if let safeData = data {
                 do {
                     self.isLoading = true
@@ -75,5 +75,10 @@ class CurrencyRatesViewModel: NSObject {
             self.isLoading = false
             completionForSpinner(self.isLoading)
         }
+    }
+    
+    func resetCurrentData() {
+        currencyDetails = nil
+        exchangeRates = []
     }
 }
