@@ -9,7 +9,8 @@ import Foundation
 
 struct K {
     static let currencyCellIdentifier = "currencyCell"
-    static let currecnyCellNibName = "CurrencyCell"
+    static let currencyCellNibName = "CurrencyCell"
+    static let currencyDetailsNibName = "CurrencyDetailsCell"
     static let currencyDatailSegue = "currencyDetailsView"
     static let currencyDetailsCellIdentifier = "currencyDetails"
 }

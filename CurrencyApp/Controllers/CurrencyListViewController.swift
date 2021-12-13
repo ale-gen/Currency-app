@@ -20,7 +20,7 @@ class CurrencyListViewController: UIViewController {
         super.viewDidLoad()
         configureSpinner()
         configureSegmentedControl()
-        currencyTableView.register(UINib(nibName: K.currecnyCellNibName, bundle: nil), forCellReuseIdentifier: K.currencyCellIdentifier)
+        currencyTableView.register(UINib(nibName: K.currencyCellNibName, bundle: nil), forCellReuseIdentifier: K.currencyCellIdentifier)
         refresh()
         currencyTableView.delegate = self
     }

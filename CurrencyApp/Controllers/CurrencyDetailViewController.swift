@@ -27,6 +27,7 @@ class CurrencyDetailViewController: UIViewController {
         configureDatePickers()
         refresh()
         tableView.dataSource = self
+        tableView.register(UINib(nibName: K.currencyDetailsNibName, bundle: nil), forCellReuseIdentifier: K.currencyDetailsCellIdentifier)
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
@@ -96,14 +97,15 @@ extension CurrencyDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.currencyDetailsCellIdentifier, for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.currencyDetailsCellIdentifier, for: indexPath) as! CurrencyDetailsCell
         configureCell(cell, for: indexPath)
         return cell
     }
     
-    func configureCell(_ cell: UITableViewCell, for indexPath: IndexPath) {
+    func configureCell(_ cell: CurrencyDetailsCell, for indexPath: IndexPath) {
         if let safeRate = currencyViewModel.currencyDetails?.rates[indexPath.row] {
-            cell.textLabel?.text = String(safeRate.mid)
+            cell.dateLabel.text = safeRate.effectiveDate
+            cell.midLabel.text = String(safeRate.mid)
         }
     }
 }
