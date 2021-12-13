@@ -21,15 +21,8 @@ class CurrencyDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
-        configureLabels()
-        configureSpinner()
-        configureDatePickers()
-        setDefaultDates()
+        configureSubviews()
         refresh()
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: K.currencyDetailsNibName, bundle: nil), forCellReuseIdentifier: K.currencyDetailsCellIdentifier)
-        
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
@@ -54,15 +47,6 @@ class CurrencyDetailViewController: UIViewController {
         }
     }
     
-    func getDatesFromPickers() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        let startDatePickerValue = dateFormatter.string(from: startDatePicker.date)
-        let endDatePickerValue = dateFormatter.string(from: endDatePicker.date)
-        currencyViewModel.startDate = startDatePickerValue
-        currencyViewModel.endDate = endDatePickerValue
-    }
-    
     func showAlert() {
         let alert = UIAlertController(title: "Cannot load data", message: self.currencyViewModel.errorMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -71,28 +55,46 @@ class CurrencyDetailViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func configureSpinner() {
-        spinnerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        spinnerView.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY)
-        spinnerView.layer.cornerRadius = 10
-    }
-    
-    func manageSpinnerShowing(isLoading: Bool) {
+    private func manageSpinnerShowing(isLoading: Bool) {
         if (isLoading) {
             self.spinnerView.startAnimating()
         } else {
             self.spinnerView.stopAnimating()
         }
     }
+
+}
+
+//MARK: - Subviews Configuration methods
+extension CurrencyDetailViewController {
     
-    func configureNavigationBar() {
+    func configureSubviews() {
+        configureNavigationBar()
+        configureLabels()
+        configureSpinner()
+        configureDatePickers()
+        configureTableView()
+    }
+    
+    private func configureTableView() {
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: K.currencyDetailsNibName, bundle: nil), forCellReuseIdentifier: K.currencyDetailsCellIdentifier)
+    }
+    
+    private func configureSpinner() {
+        spinnerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        spinnerView.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY)
+        spinnerView.layer.cornerRadius = 10
+    }
+    
+    private func configureNavigationBar() {
         navigationItem.backBarButtonItem?.title = "Back"
         if let safeRate = rates {
             self.title = safeRate.currency.capitalized
         }
     }
     
-    func configureLabels() {
+    private func configureLabels() {
         startDateLabel.layer.masksToBounds = true
         startDateLabel.layer.cornerRadius = 15
         
@@ -100,7 +102,7 @@ class CurrencyDetailViewController: UIViewController {
         endDateLabel.layer.cornerRadius = 15
     }
     
-    func configureDatePickers() {
+    private func configureDatePickers() {
         startDatePicker.semanticContentAttribute = .forceLeftToRight
         startDatePicker.center = CGPoint(x: self.startDateLabel.frame.midX, y: startDatePicker.frame.midY)
         
@@ -112,22 +114,8 @@ class CurrencyDetailViewController: UIViewController {
         
         endDatePicker.backgroundColor = .white
         endDatePicker.layer.cornerRadius = 5
-    }
-    
-    private func setDefaultDates() {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd"
-        let day = dateFormatter.string(from: date)
-        dateFormatter.dateFormat = "MM"
-        let month = dateFormatter.string(from: date)
-        dateFormatter.dateFormat = "YYYY"
-        let year = dateFormatter.string(from: date)
-        let startDateString = "\(year)-\(month)-01"
-        let endDateString = "\(year)-\(month)-\(day)"
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        startDatePicker.setDate(dateFormatter.date(from: startDateString)!, animated: false)
-        endDatePicker.setDate(dateFormatter.date(from: endDateString)!, animated: false)
+        
+        setDefaultDates()
     }
 }
 
@@ -147,5 +135,34 @@ extension CurrencyDetailViewController: UITableViewDataSource {
             cell.dateLabel.text = safeRate.effectiveDate
             cell.midLabel.text = String(safeRate.mid)
         }
+    }
+}
+
+//MARK: - functionality of date pickers
+extension CurrencyDetailViewController {
+    
+    private func getDatesFromPickers() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        let startDatePickerValue = dateFormatter.string(from: startDatePicker.date)
+        let endDatePickerValue = dateFormatter.string(from: endDatePicker.date)
+        currencyViewModel.startDate = startDatePickerValue
+        currencyViewModel.endDate = endDatePickerValue
+    }
+    
+    private func setDefaultDates() {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        let day = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "MM"
+        let month = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "YYYY"
+        let year = dateFormatter.string(from: date)
+        let startDateString = "\(year)-\(month)-01"
+        let endDateString = "\(year)-\(month)-\(day)"
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        startDatePicker.setDate(dateFormatter.date(from: startDateString)!, animated: false)
+        endDatePicker.setDate(dateFormatter.date(from: endDateString)!, animated: false)
     }
 }

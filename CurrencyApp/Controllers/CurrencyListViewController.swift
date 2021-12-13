@@ -18,11 +18,8 @@ class CurrencyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSpinner()
-        configureSegmentedControl()
-        currencyTableView.register(UINib(nibName: K.currencyCellNibName, bundle: nil), forCellReuseIdentifier: K.currencyCellIdentifier)
+        configureSubviews()
         refresh()
-        currencyTableView.delegate = self
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
@@ -39,7 +36,6 @@ class CurrencyListViewController: UIViewController {
         }
         refresh()
     }
-    
     
     func refresh() {
         currencyViewModel.fetchCurrencies { isLoading in
@@ -66,20 +62,31 @@ class CurrencyListViewController: UIViewController {
         currencyTableView.reloadData()
     }
     
-    func configureSegmentedControl() {
+    private func configureSubviews() {
+        configureSpinner()
+        configureSegmentedControl()
+        configureTableView()
+    }
+    
+    private func configureTableView() {
+        currencyTableView.register(UINib(nibName: K.currencyCellNibName, bundle: nil), forCellReuseIdentifier: K.currencyCellIdentifier)
+        currencyTableView.delegate = self
+    }
+    
+    private func configureSegmentedControl() {
         let titleTextAttributeForSelected = [NSAttributedString.Key.foregroundColor: UIColor.white]
         let titleTextAttributeForNormal = [NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControl.setTitleTextAttributes(titleTextAttributeForNormal, for: .normal)
         segmentedControl.setTitleTextAttributes(titleTextAttributeForSelected, for: .selected)
     }
     
-    func configureSpinner() {
+    private func configureSpinner() {
         spinnerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         spinnerView.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY)
         spinnerView.layer.cornerRadius = 10
     }
     
-    func manageSpinnerShowing(isLoading: Bool) {
+    private func manageSpinnerShowing(isLoading: Bool) {
         if (isLoading) {
             self.spinnerView.startAnimating()
         } else {
