@@ -18,6 +18,7 @@ class CurrencyListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSpinner()
+        currencyTableView.register(UINib(nibName: K.currecnyCellNibName, bundle: nil), forCellReuseIdentifier: K.currencyCellIdentifier)
         refresh()
     }
     
@@ -68,14 +69,16 @@ extension CurrencyListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.currencyCellIdentifier, for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.currencyCellIdentifier, for: indexPath) as! CurrencyCell
         configureCell(cell, for: indexPath)
         return cell
     }
     
-    func configureCell(_ cell: UITableViewCell, for indexPath: IndexPath) {
+    func configureCell(_ cell: CurrencyCell, for indexPath: IndexPath) {
         if let safeRate = currencyViewModel.exchangeRates?[indexPath.row] {
-            cell.textLabel?.text = safeRate.code
+            cell.codeLabel.text = safeRate.code
+            cell.currencyLabel.text = safeRate.currency.uppercased()
+            cell.midLabel.text = String(safeRate.mid)
         }
     }
     

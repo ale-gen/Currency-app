@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A7A3407276738A800C87271 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A3405276738A800C87271 /* CurrencyCell.swift */; };
+		7A7A3408276738A900C87271 /* CurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A7A3406276738A800C87271 /* CurrencyCell.xib */; };
 		7AFDBD0D2763E07600287E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDBD0C2763E07600287E56 /* AppDelegate.swift */; };
 		7AFDBD0F2763E07600287E56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDBD0E2763E07600287E56 /* SceneDelegate.swift */; };
 		7AFDBD112763E07600287E56 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDBD102763E07600287E56 /* CurrencyListViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A7A3405276738A800C87271 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		7A7A3406276738A800C87271 /* CurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCell.xib; sourceTree = "<group>"; };
 		7AFDBD092763E07600287E56 /* CurrencyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AFDBD0C2763E07600287E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFDBD0E2763E07600287E56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				7AFDBD122763E07600287E56 /* Main.storyboard */,
+				7A7A3405276738A800C87271 /* CurrencyCell.swift */,
+				7A7A3406276738A800C87271 /* CurrencyCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7A3408276738A900C87271 /* CurrencyCell.xib in Resources */,
 				7AFDBD192763E07D00287E56 /* LaunchScreen.storyboard in Resources */,
 				7AFDBD162763E07D00287E56 /* Assets.xcassets in Resources */,
 				7AFDBD142763E07600287E56 /* Main.storyboard in Resources */,
@@ -206,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7A3407276738A800C87271 /* CurrencyCell.swift in Sources */,
 				7AFDBD262763E44E00287E56 /* ExchangeRates.swift in Sources */,
 				7AFDBD112763E07600287E56 /* CurrencyListViewController.swift in Sources */,
 				7AFDBD2A2763E78000287E56 /* ApiService.swift in Sources */,

@@ -9,4 +9,5 @@ import Foundation
 
 struct K {
     static let currencyCellIdentifier = "currencyCell"
+    static let currecnyCellNibName = "CurrencyCell"
 }
