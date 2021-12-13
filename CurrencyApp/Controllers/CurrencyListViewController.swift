@@ -14,6 +14,7 @@ class CurrencyListViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet var currencyViewModel: CurrencyRatesViewModel!
+    private var selectedRow: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,12 +107,17 @@ extension CurrencyListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        
+        selectedRow = indexPath.row
         self.performSegue(withIdentifier: K.currencyDatailSegue, sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.currencyDatailSegue, let nextVC = segue.destination as? CurrencyDetailViewController {
+            if let safeSelectedRow = selectedRow {
+                nextVC.rates = currencyViewModel.exchangeRates?[safeSelectedRow]
+            }
+        }
+    }
     
     
 }
-
-
