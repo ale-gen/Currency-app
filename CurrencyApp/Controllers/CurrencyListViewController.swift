@@ -11,18 +11,30 @@ class CurrencyListViewController: UIViewController {
     
     @IBOutlet weak var currencyTableView: UITableView!
     @IBOutlet weak var spinnerView: UIActivityIndicatorView!
-    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet var currencyViewModel: CurrencyRatesViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSpinner()
+        configureSegmentedControl()
         currencyTableView.register(UINib(nibName: K.currecnyCellNibName, bundle: nil), forCellReuseIdentifier: K.currencyCellIdentifier)
         refresh()
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
+        refresh()
+    }
+    
+    @IBAction func onSegmentedControlChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            currencyViewModel.endpoint = "A"
+        } else if sender.selectedSegmentIndex == 1 {
+            currencyViewModel.endpoint = "B"
+        } else {
+            currencyViewModel.endpoint = "C"
+        }
         refresh()
     }
     
@@ -48,6 +60,13 @@ class CurrencyListViewController: UIViewController {
         let alert = UIAlertController(title: "Cannot load data", message: self.currencyViewModel.errorMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func configureSegmentedControl() {
+        let titleTextAttributeForSelected = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let titleTextAttributeForNormal = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentedControl.setTitleTextAttributes(titleTextAttributeForNormal, for: .normal)
+        segmentedControl.setTitleTextAttributes(titleTextAttributeForSelected, for: .selected)
     }
     
     func configureSpinner() {

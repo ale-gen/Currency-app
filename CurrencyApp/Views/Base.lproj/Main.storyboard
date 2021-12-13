@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OpK-kq-jg3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="129" width="414" height="733"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="dot-6F-EHo"/>
@@ -30,14 +30,27 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="XI6-8Q-pND">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="A Table"/>
+                                    <segment title="B Table"/>
+                                    <segment title="C Table"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" systemColor="systemIndigoColor"/>
+                                <connections>
+                                    <action selector="onSegmentedControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6st-pr-B8x"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OpK-kq-jg3" secondAttribute="bottom" id="0Op-Hm-yqo"/>
                             <constraint firstItem="OpK-kq-jg3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HHV-YO-7aS"/>
-                            <constraint firstItem="OpK-kq-jg3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Qd3-g9-fdb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OpK-kq-jg3" secondAttribute="trailing" id="cU9-5i-pax"/>
+                            <constraint firstItem="OpK-kq-jg3" firstAttribute="top" secondItem="XI6-8Q-pND" secondAttribute="bottom" constant="10" id="sgR-Fe-9k5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Currency Rates" id="6bS-MJ-sIq">
@@ -50,6 +63,7 @@
                     <connections>
                         <outlet property="currencyTableView" destination="OpK-kq-jg3" id="Inj-7x-Be0"/>
                         <outlet property="currencyViewModel" destination="YqT-BI-inC" id="60E-SN-JI0"/>
+                        <outlet property="segmentedControl" destination="XI6-8Q-pND" id="tVu-We-ASW"/>
                         <outlet property="spinnerView" destination="KkV-p0-jeX" id="gB3-yb-RP2"/>
                     </connections>
                 </viewController>
@@ -88,6 +102,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

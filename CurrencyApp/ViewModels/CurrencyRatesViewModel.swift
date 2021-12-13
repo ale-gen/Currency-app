@@ -17,6 +17,7 @@ class CurrencyRatesViewModel: NSObject {
     
     @IBOutlet var apiService: ApiService!
     var exchangeRates: [Rates]?
+    var endpoint: String = "A"
     var isLoading = false
     var isShowingError = false
     var errorMessage: String? {
@@ -31,7 +32,7 @@ class CurrencyRatesViewModel: NSObject {
     }
     
     func fetchCurrencies(completionForSpinner: @escaping (Bool) -> (Void), completion: @escaping (Result) -> Void) {
-        apiService.sendRequest(endpoint: "A") { data in
+        apiService.sendRequest(endpoint: endpoint) { data in
             if let safeData = data {
                 do {
                     self.isLoading = true
