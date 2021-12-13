@@ -103,10 +103,10 @@ extension CurrencyDetailViewController {
     }
     
     private func configureDatePickers() {
-        startDatePicker.semanticContentAttribute = .forceLeftToRight
+        startDatePicker.semanticContentAttribute = .forceRightToLeft
         startDatePicker.center = CGPoint(x: self.startDateLabel.frame.midX, y: startDatePicker.frame.midY)
         
-        endDatePicker.semanticContentAttribute = .forceLeftToRight
+        endDatePicker.semanticContentAttribute = .forceRightToLeft
         endDatePicker.center = CGPoint(x: self.endDateLabel.frame.midX, y: startDatePicker.frame.midY)
         
         startDatePicker.backgroundColor = .white
@@ -114,6 +114,7 @@ extension CurrencyDetailViewController {
         
         endDatePicker.backgroundColor = .white
         endDatePicker.layer.cornerRadius = 5
+        startDatePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
         
         setDefaultDates()
     }
