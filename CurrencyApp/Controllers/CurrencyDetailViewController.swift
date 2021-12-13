@@ -84,6 +84,8 @@ class CurrencyDetailViewController: UIViewController {
         
         endDateLabel.layer.masksToBounds = true
         endDateLabel.layer.cornerRadius = 15
+        
+        startDateLabel.center = CGPoint(x: self.view.frame.midX / 2, y: startDateLabel.frame.midY)
     }
     
     func configureDatePickers() {
