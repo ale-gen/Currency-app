@@ -28,6 +28,7 @@ class CurrencyCell: UITableViewCell {
     func configureSubviews() {
         bgView.layer.cornerRadius = 15
         codeLabel.layer.cornerRadius = 10
+        codeLabel.numberOfLines = 2
     }
     
 }

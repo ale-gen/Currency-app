@@ -33,13 +33,13 @@
                                 <color key="shadowColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="0.16953414007527939" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.0" height="-2"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Polska" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejG-bl-cgM">
-                                <rect key="frame" x="105" y="19" width="167" height="39"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Polska" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejG-bl-cgM">
+                                <rect key="frame" x="105" y="10" width="167" height="57"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2436" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Om-vM-Qkg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2436" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Om-vM-Qkg">
                                 <rect key="frame" x="277" y="19" width="90" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="Q7s-mD-8o3"/>
@@ -56,8 +56,8 @@
                             <constraint firstAttribute="bottom" secondItem="1Om-vM-Qkg" secondAttribute="bottom" constant="19" id="c4G-kX-zZp"/>
                             <constraint firstItem="1Om-vM-Qkg" firstAttribute="top" secondItem="fmU-Lz-Hfn" secondAttribute="top" constant="19" id="hZO-hL-Gqe"/>
                             <constraint firstItem="ejG-bl-cgM" firstAttribute="leading" secondItem="jfD-h5-tdO" secondAttribute="trailing" constant="10" id="l3N-KH-P1O"/>
-                            <constraint firstAttribute="bottom" secondItem="ejG-bl-cgM" secondAttribute="bottom" constant="19" id="pjc-K5-axk"/>
-                            <constraint firstItem="ejG-bl-cgM" firstAttribute="top" secondItem="fmU-Lz-Hfn" secondAttribute="top" constant="19" id="pkB-Ja-xu6"/>
+                            <constraint firstAttribute="bottom" secondItem="ejG-bl-cgM" secondAttribute="bottom" constant="10" id="pjc-K5-axk"/>
+                            <constraint firstItem="ejG-bl-cgM" firstAttribute="top" secondItem="fmU-Lz-Hfn" secondAttribute="top" constant="10" id="pkB-Ja-xu6"/>
                             <constraint firstItem="jfD-h5-tdO" firstAttribute="leading" secondItem="fmU-Lz-Hfn" secondAttribute="leading" constant="25" id="qIh-xF-m5E"/>
                             <constraint firstAttribute="trailing" secondItem="1Om-vM-Qkg" secondAttribute="trailing" constant="10" id="r8Y-3H-FtY"/>
                             <constraint firstItem="1Om-vM-Qkg" firstAttribute="leading" secondItem="ejG-bl-cgM" secondAttribute="trailing" constant="5" id="uaQ-Gv-VIq"/>

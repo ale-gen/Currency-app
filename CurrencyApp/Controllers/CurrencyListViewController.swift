@@ -51,7 +51,9 @@ class CurrencyListViewController: UIViewController {
     }
     
     func configureSpinner() {
+        spinnerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         spinnerView.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY)
+        spinnerView.layer.cornerRadius = 10
     }
     
     func manageSpinnerShowing(isLoading: Bool) {
@@ -77,7 +79,7 @@ extension CurrencyListViewController: UITableViewDataSource {
     func configureCell(_ cell: CurrencyCell, for indexPath: IndexPath) {
         if let safeRate = currencyViewModel.exchangeRates?[indexPath.row] {
             cell.codeLabel.text = safeRate.code
-            cell.currencyLabel.text = safeRate.currency.uppercased()
+            cell.currencyLabel.text = safeRate.currency.capitalized
             cell.midLabel.text = String(safeRate.mid)
         }
     }
