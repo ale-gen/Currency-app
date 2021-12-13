@@ -48,7 +48,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OpK-kq-jg3" secondAttribute="trailing" id="cU9-5i-pax"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Currency Rates" id="6bS-MJ-sIq"/>
+                    <navigationItem key="navigationItem" title="Currency Rates" id="6bS-MJ-sIq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="PXK-Rh-chd">
+                            <connections>
+                                <action selector="refreshButtonPressed:" destination="BYZ-38-t0r" id="XnN-ZC-dsf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="currencyTableView" destination="OpK-kq-jg3" id="Inj-7x-Be0"/>
                         <outlet property="currencyViewModel" destination="YqT-BI-inC" id="60E-SN-JI0"/>

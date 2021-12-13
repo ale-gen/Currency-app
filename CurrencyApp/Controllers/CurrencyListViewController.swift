@@ -18,6 +18,15 @@ class CurrencyListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSpinner()
+        refresh()
+    }
+    
+    @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
+        refresh()
+    }
+    
+    
+    func refresh() {
         currencyViewModel.fetchCurrencies { isLoading in
             DispatchQueue.main.async {
                 self.manageSpinnerShowing(isLoading: isLoading)
@@ -32,7 +41,6 @@ class CurrencyListViewController: UIViewController {
                 }
             }
         }
-
     }
     
     func showAlert() {
