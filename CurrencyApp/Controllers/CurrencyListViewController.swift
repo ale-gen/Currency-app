@@ -21,6 +21,7 @@ class CurrencyListViewController: UIViewController {
         configureSegmentedControl()
         currencyTableView.register(UINib(nibName: K.currecnyCellNibName, bundle: nil), forCellReuseIdentifier: K.currencyCellIdentifier)
         refresh()
+        currencyTableView.delegate = self
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
@@ -84,7 +85,7 @@ class CurrencyListViewController: UIViewController {
     }
 }
 
-extension CurrencyListViewController: UITableViewDataSource {
+extension CurrencyListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currencyViewModel.exchangeRates?.count ?? 0
     }
@@ -102,6 +103,13 @@ extension CurrencyListViewController: UITableViewDataSource {
             cell.midLabel.text = String(safeRate.mid)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        self.performSegue(withIdentifier: K.currencyDatailSegue, sender: self)
+    }
+    
     
     
 }

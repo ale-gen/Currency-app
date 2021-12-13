@@ -65,6 +65,7 @@
                         <outlet property="currencyViewModel" destination="YqT-BI-inC" id="60E-SN-JI0"/>
                         <outlet property="segmentedControl" destination="XI6-8Q-pND" id="tVu-We-ASW"/>
                         <outlet property="spinnerView" destination="KkV-p0-jeX" id="gB3-yb-RP2"/>
+                        <segue destination="KtN-sa-ZQT" kind="show" identifier="currencyDetailsView" id="wez-xH-oCM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -76,6 +77,24 @@
                 </customObject>
             </objects>
             <point key="canvasLocation" x="1023.1884057971015" y="81.696428571428569"/>
+        </scene>
+        <!--Currency Detail View Controller-->
+        <scene sceneID="GC9-ko-dKR">
+            <objects>
+                <viewController id="KtN-sa-ZQT" customClass="CurrencyDetailViewController" customModule="CurrencyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bwi-1i-YCY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QKQ-ED-qMp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="x4b-ls-jpu">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="tMg-Nw-RDs"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKh-F3-92O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1987" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IiV-Uf-Y5q">
