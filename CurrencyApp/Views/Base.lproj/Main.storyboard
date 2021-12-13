@@ -69,12 +69,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <customObject id="Hzr-6n-uEZ" customClass="ApiService" customModule="CurrencyApp" customModuleProvider="target"/>
                 <customObject id="YqT-BI-inC" customClass="CurrencyRatesViewModel" customModule="CurrencyApp" customModuleProvider="target">
                     <connections>
                         <outlet property="apiService" destination="Hzr-6n-uEZ" id="2e9-C6-huQ"/>
                     </connections>
                 </customObject>
+                <customObject id="Hzr-6n-uEZ" customClass="ApiService" customModule="CurrencyApp" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1023.1884057971015" y="81.696428571428569"/>
         </scene>
@@ -85,16 +85,127 @@
                     <view key="view" contentMode="scaleToFill" id="Bwi-1i-YCY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDB-3J-WTi" userLabel="EndDateView">
+                                <rect key="frame" x="200" y="88" width="214" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJL-P1-REO">
+                                        <rect key="frame" x="40" y="20" width="134" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="HTf-RA-mHc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="CxF-oI-5X2" userLabel="EndDatePicker">
+                                        <rect key="frame" x="20" y="70" width="174" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstItem="CxF-oI-5X2" firstAttribute="leading" secondItem="CDB-3J-WTi" secondAttribute="leading" constant="20" id="0jg-oR-jtg"/>
+                                    <constraint firstAttribute="height" constant="130" id="0p1-Hd-kIL"/>
+                                    <constraint firstItem="eJL-P1-REO" firstAttribute="leading" secondItem="CDB-3J-WTi" secondAttribute="leading" constant="40" id="2w0-Hf-m6e"/>
+                                    <constraint firstAttribute="trailing" secondItem="eJL-P1-REO" secondAttribute="trailing" constant="40" id="RUe-g4-g6Z"/>
+                                    <constraint firstItem="eJL-P1-REO" firstAttribute="top" secondItem="CDB-3J-WTi" secondAttribute="top" constant="20" id="tx9-Ug-618"/>
+                                    <constraint firstAttribute="trailing" secondItem="CxF-oI-5X2" secondAttribute="trailing" constant="20" id="y7x-1r-AVB"/>
+                                    <constraint firstItem="CxF-oI-5X2" firstAttribute="top" secondItem="eJL-P1-REO" secondAttribute="bottom" constant="15" id="zCQ-Ni-Qh0"/>
+                                    <constraint firstAttribute="bottom" secondItem="CxF-oI-5X2" secondAttribute="bottom" constant="20" id="zgn-wg-aSU"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vvM-CC-8Sj">
+                                <rect key="frame" x="0.0" y="228" width="414" height="634"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="currencyDetails" id="t97-6s-Pzw">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t97-6s-Pzw" id="G3t-8F-ltE">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="L8M-We-YdC">
+                                <rect key="frame" x="130" y="429" width="153" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXi-bs-XyT" userLabel="StartDateView">
+                                <rect key="frame" x="0.0" y="88" width="200" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOm-1s-yDY">
+                                        <rect key="frame" x="40" y="20" width="120" height="35"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="Q11-gO-KwU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="FDT-L7-NsB" userLabel="StartDatePicker">
+                                        <rect key="frame" x="20" y="70" width="160" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="8LQ-3D-aFO"/>
+                                    <constraint firstAttribute="trailing" secondItem="nOm-1s-yDY" secondAttribute="trailing" constant="40" id="HHE-68-eqw"/>
+                                    <constraint firstItem="nOm-1s-yDY" firstAttribute="leading" secondItem="qXi-bs-XyT" secondAttribute="leading" constant="40" id="Hue-bq-EeY"/>
+                                    <constraint firstItem="FDT-L7-NsB" firstAttribute="leading" secondItem="qXi-bs-XyT" secondAttribute="leading" constant="20" id="JMU-Q0-lqO"/>
+                                    <constraint firstAttribute="width" constant="200" id="Nak-IC-l6M"/>
+                                    <constraint firstAttribute="bottom" secondItem="FDT-L7-NsB" secondAttribute="bottom" constant="20" id="UQG-2k-Uzn"/>
+                                    <constraint firstItem="FDT-L7-NsB" firstAttribute="top" secondItem="nOm-1s-yDY" secondAttribute="bottom" constant="15" id="VRH-dN-vnN"/>
+                                    <constraint firstItem="nOm-1s-yDY" firstAttribute="top" secondItem="qXi-bs-XyT" secondAttribute="top" constant="20" id="YDo-Ua-bP1"/>
+                                    <constraint firstAttribute="trailing" secondItem="FDT-L7-NsB" secondAttribute="trailing" constant="20" id="sSS-XA-dyf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="QKQ-ED-qMp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QKQ-ED-qMp" firstAttribute="trailing" secondItem="CDB-3J-WTi" secondAttribute="trailing" id="6Nq-yQ-Nbg"/>
+                            <constraint firstItem="QKQ-ED-qMp" firstAttribute="trailing" secondItem="vvM-CC-8Sj" secondAttribute="trailing" id="75G-s2-gEc"/>
+                            <constraint firstItem="vvM-CC-8Sj" firstAttribute="leading" secondItem="QKQ-ED-qMp" secondAttribute="leading" id="Dda-iN-Lha"/>
+                            <constraint firstItem="CDB-3J-WTi" firstAttribute="leading" secondItem="qXi-bs-XyT" secondAttribute="trailing" id="EiQ-GF-I3H"/>
+                            <constraint firstItem="qXi-bs-XyT" firstAttribute="leading" secondItem="QKQ-ED-qMp" secondAttribute="leading" id="WWF-Zj-yhd"/>
+                            <constraint firstItem="QKQ-ED-qMp" firstAttribute="bottom" secondItem="vvM-CC-8Sj" secondAttribute="bottom" id="dop-OJ-pIO"/>
+                            <constraint firstItem="CDB-3J-WTi" firstAttribute="top" secondItem="QKQ-ED-qMp" secondAttribute="top" id="gy0-t0-N4l"/>
+                            <constraint firstItem="qXi-bs-XyT" firstAttribute="top" secondItem="QKQ-ED-qMp" secondAttribute="top" id="r1Y-gF-qEa"/>
+                            <constraint firstItem="vvM-CC-8Sj" firstAttribute="top" secondItem="qXi-bs-XyT" secondAttribute="bottom" constant="10" id="xzL-d3-0T8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="x4b-ls-jpu">
                         <barButtonItem key="backBarButtonItem" title="Back" id="tMg-Nw-RDs"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="0H4-rw-ALU">
+                            <connections>
+                                <action selector="refreshButtonPressed:" destination="KtN-sa-ZQT" id="uzu-XO-n9B"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="currencyViewModel" destination="LRf-gD-qQp" id="M9t-F9-2Vo"/>
+                        <outlet property="endDateLabel" destination="eJL-P1-REO" id="AkY-m2-Tne"/>
+                        <outlet property="endDatePicker" destination="CxF-oI-5X2" id="pQI-0s-kNA"/>
+                        <outlet property="spinnerView" destination="L8M-We-YdC" id="M2u-iD-EOl"/>
+                        <outlet property="startDateLabel" destination="nOm-1s-yDY" id="pMz-v0-jUY"/>
+                        <outlet property="startDatePicker" destination="FDT-L7-NsB" id="L5D-zI-8uH"/>
+                        <outlet property="tableView" destination="vvM-CC-8Sj" id="b30-xv-tsr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKh-F3-92O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="GY1-wu-0WM" customClass="ApiService" customModule="CurrencyApp" customModuleProvider="target"/>
+                <customObject id="LRf-gD-qQp" customClass="CurrencyRatesViewModel" customModule="CurrencyApp" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="1987" y="82"/>
+            <point key="canvasLocation" x="2171.0144927536235" y="81.696428571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IiV-Uf-Y5q">
@@ -116,6 +227,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

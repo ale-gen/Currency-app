@@ -108,6 +108,7 @@ extension CurrencyListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         selectedRow = indexPath.row
+        currencyViewModel.selectedCurrency = currencyViewModel.exchangeRates?[indexPath.row]
         self.performSegue(withIdentifier: K.currencyDatailSegue, sender: self)
     }
     
@@ -115,6 +116,7 @@ extension CurrencyListViewController: UITableViewDataSource, UITableViewDelegate
         if segue.identifier == K.currencyDatailSegue, let nextVC = segue.destination as? CurrencyDetailViewController {
             if let safeSelectedRow = selectedRow {
                 nextVC.rates = currencyViewModel.exchangeRates?[safeSelectedRow]
+                nextVC.currencyViewModel = currencyViewModel
             }
         }
     }
