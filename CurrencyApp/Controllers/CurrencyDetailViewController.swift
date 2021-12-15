@@ -29,6 +29,10 @@ class CurrencyDetailViewController: UIViewController {
         refresh()
     }
     
+    @objc func datePickerChanged() {
+        refresh()
+    }
+    
     func refresh() {
         getDatesFromPickers()
         currencyViewModel.fetchCurrencyDetails { isLoading in
@@ -103,20 +107,18 @@ extension CurrencyDetailViewController {
     }
     
     private func configureDatePickers() {
-        startDatePicker.semanticContentAttribute = .forceRightToLeft
+        startDatePicker.semanticContentAttribute = .forceLeftToRight
         startDatePicker.center = CGPoint(x: self.startDateLabel.frame.midX, y: startDatePicker.frame.midY)
-        
-        endDatePicker.semanticContentAttribute = .forceRightToLeft
+
+        endDatePicker.semanticContentAttribute = .forceLeftToRight
         endDatePicker.center = CGPoint(x: self.endDateLabel.frame.midX, y: startDatePicker.frame.midY)
         
-        startDatePicker.backgroundColor = .white
-        startDatePicker.layer.cornerRadius = 5
-        
-        endDatePicker.backgroundColor = .white
-        endDatePicker.layer.cornerRadius = 5
         startDatePicker.subviews.forEach({ $0.subviews.forEach({ $0.removeFromSuperview() }) })
         
         setDefaultDates()
+        
+        startDatePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        endDatePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
     }
 }
 

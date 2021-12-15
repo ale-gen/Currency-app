@@ -99,10 +99,15 @@
                                         <color key="textColor" systemColor="systemIndigoColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker clipsSubviews="YES" contentMode="center" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="CxF-oI-5X2" userLabel="EndDatePicker">
+                                    <datePicker clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="CxF-oI-5X2" userLabel="EndDatePicker">
                                         <rect key="frame" x="20" y="70" width="174" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
@@ -140,7 +145,7 @@
                                         <color key="textColor" systemColor="systemIndigoColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="vfasfa" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="FDT-L7-NsB" userLabel="StartDatePicker">
+                                    <datePicker toolTip="vfasfa" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="FDT-L7-NsB" userLabel="StartDatePicker">
                                         <rect key="frame" x="20" y="70" width="160" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,7 +160,6 @@
                                     <constraint firstAttribute="trailing" secondItem="nOm-1s-yDY" secondAttribute="trailing" constant="40" id="HHE-68-eqw"/>
                                     <constraint firstItem="nOm-1s-yDY" firstAttribute="leading" secondItem="qXi-bs-XyT" secondAttribute="leading" constant="40" id="Hue-bq-EeY"/>
                                     <constraint firstItem="FDT-L7-NsB" firstAttribute="leading" secondItem="qXi-bs-XyT" secondAttribute="leading" constant="20" id="JMU-Q0-lqO"/>
-                                    <constraint firstAttribute="width" constant="200" id="Nak-IC-l6M"/>
                                     <constraint firstAttribute="bottom" secondItem="FDT-L7-NsB" secondAttribute="bottom" constant="20" id="UQG-2k-Uzn"/>
                                     <constraint firstItem="FDT-L7-NsB" firstAttribute="top" secondItem="nOm-1s-yDY" secondAttribute="bottom" constant="15" id="VRH-dN-vnN"/>
                                     <constraint firstItem="nOm-1s-yDY" firstAttribute="top" secondItem="qXi-bs-XyT" secondAttribute="top" constant="20" id="YDo-Ua-bP1"/>
