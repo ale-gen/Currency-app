@@ -7,3 +7,4 @@ Data are fetch from API of NBP - https://api.nbp.pl/
 
 Below you can click for issue to show a demo :point_down:
 
+![Demo](https://user-images.githubusercontent.com/62150130/146174064-33a09a31-0141-4f63-972e-e09b61124a69.mov)
