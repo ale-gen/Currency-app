@@ -5,5 +5,5 @@ Then you can choose a proper one cell to check more details about it, for exampl
 
 Data are fetch from API of NBP - https://api.nbp.pl/
 
-Below you can click for issue to show a demo :below:
+Below you can click for issue to show a demo :point_down:
 
